@@ -32,6 +32,9 @@ public class UsuarioService {
 
 		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
 			return Optional.empty();
+		
+		if(usuario.getFoto().isBlank())
+	         usuario.setFoto("https://cdn.icon-icons.com/icons2/3514/PNG/512/man_person_avatar_user_profile_icon_221064.png");
 
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
